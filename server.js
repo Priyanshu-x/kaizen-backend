@@ -4,8 +4,6 @@ require("dotenv").config();
 const connectDB = require("./config/db");
 const helmet = require("helmet");
 const rateLimit = require("express-rate-limit");
-const mongoSanitize = require("express-mongo-sanitize");
-const xss = require("xss-clean");
 const hpp = require("hpp");
 
 const app = express();
@@ -46,8 +44,6 @@ app.use(cors({
 app.use(express.json());
 
 // Sanitize data
-app.use(mongoSanitize()); // Prevent NoSQL injection
-app.use(xss()); // Prevent XSS attacks
 app.use(hpp()); // Prevent HTTP Parameter Pollution
 
 // Routes
