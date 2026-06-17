@@ -25,7 +25,8 @@ router.post("/", async (req, res) => {
         const savedJournalEntry = await newJournalEntry.save();
         res.status(201).json(savedJournalEntry);
     } catch (err) {
-        res.status(500).json({ message: "Error saving journal entry", error: err });
+        console.error("Error saving journal entry:", err);
+        res.status(500).json({ message: "Error saving journal entry" });
     }
 });
 
@@ -35,7 +36,8 @@ router.get("/", async (req, res) => {
         const journalEntries = await JournalEntry.find({ userId: req.user.uid });
         res.json(journalEntries);
     } catch (err) {
-        res.status(500).json({ message: "Error fetching journal entries", error: err });
+        console.error("Error fetching journal entries:", err);
+        res.status(500).json({ message: "Error fetching journal entries" });
     }
 });
 
@@ -63,7 +65,8 @@ router.put("/:id", async (req, res) => {
         if (!updatedJournalEntry) return res.status(404).json({ message: "Journal entry not found" });
         res.json(updatedJournalEntry);
     } catch (err) {
-        res.status(500).json({ message: "Error updating journal entry", error: err });
+        console.error("Error updating journal entry:", err);
+        res.status(500).json({ message: "Error updating journal entry" });
     }
 });
 
@@ -75,7 +78,8 @@ router.delete("/:id", async (req, res) => {
         if (!deletedJournalEntry) return res.status(404).json({ message: "Journal entry not found" });
         res.json({ message: "Journal entry deleted" });
     } catch (err) {
-        res.status(500).json({ message: "Error deleting journal entry", error: err });
+        console.error("Error deleting journal entry:", err);
+        res.status(500).json({ message: "Error deleting journal entry" });
     }
 });
 

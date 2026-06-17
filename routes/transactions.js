@@ -12,7 +12,8 @@ router.get("/", async (req, res) => {
         const transactions = await Transaction.find({ userId: req.user.uid });
         res.json(transactions);
     } catch (err) {
-        res.status(500).json({ message: "Error fetching transactions", error: err });
+        console.error("Error fetching transactions:", err);
+        res.status(500).json({ message: "Error fetching transactions" });
     }
 });
 
@@ -40,7 +41,8 @@ router.post("/", async (req, res) => {
         const savedTransaction = await newTransaction.save();
         res.status(201).json(savedTransaction);
     } catch (err) {
-        res.status(500).json({ message: "Error saving transaction", error: err });
+        console.error("Error saving transaction:", err);
+        res.status(500).json({ message: "Error saving transaction" });
     }
 });
 
@@ -72,7 +74,8 @@ router.put("/:id", async (req, res) => {
         if (!updatedTransaction) return res.status(404).json({ message: "Transaction not found or unauthorized" });
         res.json(updatedTransaction);
     } catch (err) {
-        res.status(500).json({ message: "Error updating transaction", error: err });
+        console.error("Error updating transaction:", err);
+        res.status(500).json({ message: "Error updating transaction" });
     }
 });
 
@@ -84,7 +87,8 @@ router.delete("/:id", async (req, res) => {
         if (!deletedTransaction) return res.status(404).json({ message: "Transaction not found or unauthorized" });
         res.json({ message: "Transaction deleted" });
     } catch (err) {
-        res.status(500).json({ message: "Error deleting transaction", error: err });
+        console.error("Error deleting transaction:", err);
+        res.status(500).json({ message: "Error deleting transaction" });
     }
 });
 

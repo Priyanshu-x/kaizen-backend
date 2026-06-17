@@ -38,7 +38,7 @@ router.post("/", async (req, res) => {
 
     } catch (error) {
         console.error("Migration failed:", error);
-        res.status(500).json({ message: "Migration failed", error: error.message });
+        res.status(500).json({ message: "Migration failed" });
     }
 });
 

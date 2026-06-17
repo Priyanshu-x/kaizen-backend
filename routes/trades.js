@@ -13,7 +13,8 @@ router.post("/", async (req, res) => {
         const savedTrade = await newTrade.save();
         res.status(201).json(savedTrade);
     } catch (err) {
-        res.status(500).json({ message: "Error saving trade", error: err });
+        console.error("Error saving trade:", err);
+        res.status(500).json({ message: "Error saving trade" });
     }
 });
 
@@ -32,7 +33,8 @@ router.get("/", async (req, res) => {
         const trades = await Trade.find(query);
         res.json(trades);
     } catch (err) {
-        res.status(500).json({ message: "Error fetching trades", error: err });
+        console.error("Error fetching trades:", err);
+        res.status(500).json({ message: "Error fetching trades" });
     }
 });
 
