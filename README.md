@@ -1,6 +1,6 @@
-# Income Tracker Backend
+# Kaizen Backend
 
-This is the backend application for the Income Tracker project. It provides the necessary APIs to manage income and expenses.
+This is the backend application for the Kaizen project. It provides the necessary APIs to manage income and expenses.
 
 ## Table of Contents
 - [Features](#features)
@@ -34,8 +34,8 @@ This is the backend application for the Income Tracker project. It provides the 
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/Priyanshu-x/income-tracker-backend
-   cd income-tracker-backend
+   git clone https://github.com/Priyanshu-x/kaizen-backend
+   cd kaizen-backend
    ```
 
 2. **Install dependencies:**
